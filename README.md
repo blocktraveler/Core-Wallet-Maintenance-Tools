@@ -7,8 +7,6 @@
 
 ## Overview
 
----
-
   These platform-independent wallet maintenance tools extract and re-import **private descriptors** in modern Namecoin Core **descriptor wallets**.
   They allow secure backup, migration, and restoration of descriptor-based keys — including:
 
@@ -17,9 +15,9 @@
 
   Place the tools in the daemon folder (e.g. on Windows):
 
-	```
+	
 	C:\Program Files\Namecoin\daemon
-	```
+	
 
   On-chain Archive:
   -----------------
@@ -35,10 +33,10 @@
   * Download and install Python from [python.org](https://www.python.org/downloads/).
   * Configure RPC credentials
 
-	  On a fresh installation create (otherwise edit) the file `namecoin.conf` in your Namecoin data directory with minimal content:
+	On a fresh installation create (otherwise edit) the file `namecoin.conf` in your Namecoin data directory with minimal content:
 
-		Windows:
-		_______
+	Windows:
+	_______
 		
 		server=1
 		rpcallowip=127.0.0.1
@@ -46,9 +44,8 @@
 		rpccookiefile=.\.cookie
         fallbackfee=0.0002
 
-
-		macOS:
-		______
+	macOS:
+	______
 		
 		server=1
 		rpcallowip=127.0.0.1
@@ -62,22 +59,20 @@
 
 	  Data directory locations:
 
-		  Windows:
-		  _______
+	Windows:
+	_______
 
 			  %AppData%\Namecoin
 
-
-		  macOS:
-		  ______
+	macOS:
+	______
 		  
-		  	Enable visibility with 'command chflags nohidden ~/Library' in the terminal before.
-
 			  ~/Library/Application Support/Namecoin/
 
+	Enable visibility with 'command chflags nohidden ~/Library' in the terminal before.
 
-		  Linux:
-		  ______
+	Linux:
+	______
 
 			  $HOME/.namecoin/
 
@@ -95,7 +90,7 @@
 
   2. **Keys that were generated internally through descriptor-based key derivation**
 	  These appear as **HD descriptors** with origin information and derivation paths (e.g. `[fingerprint/84h/.../0/*]xpub…`).
-	  They are exported by **deriving the corresponding child private key from the master key, rebuilding the descriptor with the private key.
+	  They are exported by **deriving the corresponding child private key from the master key**, rebuilding the descriptor with the private key.
 
   The script automatically distinguishes between imported keys and descriptor-derived keys and exports valid private descriptors for both.
 
@@ -139,25 +134,22 @@
   * Python standard libraries (`hashlib`, `hmac`, `struct`, etc.)
   * To install the external libraries, run the following command in the console:
   
-	```
 	pip install requests ecdsa
-	```
   
   Usage:
   ------
   1. Set your RPC credentials (`rpc_user`, `rpc_pass`, `url`).
   2. Run:
 
-	```
 	python EXPORT_descriptors.py
-	```
+
   3. The extracted private descriptors will be written to the output files.
 
   Important Warnings:
   -------------------
   * **This script exposes private keys. Only run it on a trusted machine!**
   * **Never share the output files!**
-  * Always maintain wallet backups!
+  * **Always maintain wallet backups!**
 
   Limitations:
   ------------
@@ -170,41 +162,41 @@
 
 ---
 
-  This tool imports theprivate descriptors directly derived by `EXPORT_descriptors.py` into any Namecoin Core **descriptor wallet**.
+  This tool imports the private descriptors directly derived by `EXPORT_descriptors.py` into any Namecoin Core **descriptor wallet**.
 
   It processes `descriptors_names.txt` and `descriptors_utxos.txt` (or `descriptors_hd.txt` in case of a full wallet recovery) automatically batching imports to prevent RPC size limits.
 
   Features:
   ---------
   * **Automatic file detection**
-  Imports all descriptor files present.
-  The final descriptor triggers a complete blockchain rescan needed to reconstruct the wallet.
+
+	Imports all descriptor files present.
+	The final descriptor triggers a complete blockchain rescan needed to reconstruct the wallet.
 
   * **Batch import**
-  Descriptors are imported in batches of 1000 descriptors using the `importdescriptors` RPC.
+
+	Descriptors are imported in batches of 1000 descriptors using the `importdescriptors` RPC.
 
   * **Rescan coordination**
-  The script checks the wallet's `scanning` state and in case waits until rescans are finished before submitting the next batch.
+
+	The script checks the wallet's `scanning` state and in case waits until rescans are finished before submitting the next batch.
 
   * **Timestamp control**
-  You may set `RESCAN_TIMESTAMP = 0` to the UNIX timestamp of the oldest active update for a faster rescan.
+
+	You may set `RESCAN_TIMESTAMP = 0` to the UNIX timestamp of the oldest active update for a faster rescan.
 
   Usage:
   ------
   1. Ensure that the exported files exist in the same folder, e.g.:
 
-   ```
-   descriptors_names.txt
-   descriptors_utxos.txt
-   ```
+	descriptors_names.txt
+	descriptors_utxos.txt
 
   2. Configure `rpc_user`, `rpc_pass`, and `url` near the top of the script.
 
   3. Run:
 
-	```
 	python IMPORT_descriptors_direct.py
-	```
 
   4. The script will automatically:
 
@@ -215,13 +207,11 @@
 
   5. Once finished, it displays:
 
-	```
 	[INFO] All descriptors imported successfully.
-	```
 
   Notes:
   ------
-  * The final descriptor triggers the full rescan.
+  * The final descriptor triggers a full blockchain rescan.
   * Ensure the target wallet is unlocked if encrypted.
 
 ---

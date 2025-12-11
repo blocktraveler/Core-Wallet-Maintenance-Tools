@@ -49,7 +49,9 @@
 		rpcallowip=127.0.0.1
 		rpcbind=127.0.0.1
 		rpccookiefile=.\.cookie
-		fallbackfee=0.0002
+		rpcuser=xxxxxxxxxxxxxxx
+		rpcpassword=xxxxxxxxxxx
+        fallbackfee=0.0002
 
 
 		macOS:
@@ -59,7 +61,9 @@
 		rpcallowip=127.0.0.1
 		rpcbind=127.0.0.1
 		rpccookiefile=.cookie
-		fallbackfee=0.0002
+		rpcuser=xxxxxxxxxxxxxxx
+		rpcpassword=xxxxxxxxxxx
+        fallbackfee=0.0002
 
 	The parameter "fallbackfee" is a recommended setting for the fallback fee calculation (0.0002 NMC).
 	
@@ -139,7 +143,7 @@
   unextracted_utxos.txt		UTXO addresses whose keys could not be extracted.
 
 
-  The descriptors_hd.txt file contains primary private descriptors that include the extended private key (xprv), which is effectively the master key, including derived extended keys retrieved from the wallet's hierarchiucal structure. Use this output for a complete wallet recovery.
+  The descriptors_hd.txt file contains primary private descriptors that include the extended private key (xprv), which is effectively the master key, including derived extended keys retrieved from the wallet's hierarchical structure. Use this output for a complete wallet recovery.
 
   However, to get rid of outdated and orphaned wallet entries, only the descriptors from the descriptors_names.txt and descriptors_utxos.txt outputs are to be taken for the import to a fresh wallet.
 
@@ -250,4 +254,5 @@
   for any loss of funds, assets or data, or for any damage resulting
   from its use or misuse!
   
+
 ====================================================================================

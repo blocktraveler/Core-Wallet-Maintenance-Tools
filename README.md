@@ -42,6 +42,8 @@
 		rpcallowip=127.0.0.1
 		rpcbind=127.0.0.1
 		rpccookiefile=.\.cookie
+		rpcuser=xxxxxxxxxxxxxxx
+		rpcpassword=xxxxxxxxxxx
         fallbackfee=0.0002
 
 	macOS:
@@ -51,7 +53,9 @@
 		rpcallowip=127.0.0.1
 		rpcbind=127.0.0.1
 		rpccookiefile=.cookie
-		fallbackfee=0.0002
+		rpcuser=xxxxxxxxxxxxxxx
+		rpcpassword=xxxxxxxxxxx
+        fallbackfee=0.0002
 
       The parameter `fallbackfee` is a recommended setting for the fallback fee calculation (`0.0002` NMC).
       
@@ -69,7 +73,7 @@
 		  
 			  ~/Library/Application Support/Namecoin/
 
-	Enable visibility with 'command chflags nohidden ~/Library' in the terminal before.
+	Enable visibility with `command chflags nohidden ~/Library` in the terminal before.
 
 	Linux:
 	______
@@ -86,9 +90,11 @@
   It supports **two different types of key origins**, both of which occur in descriptor-based wallets:
 
   1. **Keys that were imported from legacy wallets**
+
 	  Assets imported via raw private keys (by constructing descriptors using the Core Wallet Migration Tools) appear as **simple single-key descriptors** (`wpkh(pubkey)`, `pkh(pubkey)`, ...) and need to be exported by **replacing the public key inside the descriptor with the derived WIF private key**.
 
   2. **Keys that were generated internally through descriptor-based key derivation**
+
 	  These appear as **HD descriptors** with origin information and derivation paths (e.g. `[fingerprint/84h/.../0/*]xpub…`).
 	  They are exported by **deriving the corresponding child private key from the master key**, rebuilding the descriptor with the private key.
 
@@ -123,7 +129,7 @@
   | `unextracted_utxos.txt` | UTXO addresses whose keys could not be extracted. |
 
 
-  The `descriptors_hd.txt` file contains primary private descriptors that include the extended private key (xprv), which is effectively the master key, including derived extended keys retrieved from the wallet's hierarchiucal structure. Use this output for a complete wallet recovery.
+  The `descriptors_hd.txt` file contains primary private descriptors that include the extended private key (xprv), which is effectively the master key, including derived extended keys retrieved from the wallet's hierarchical structure. Use this output for a complete wallet recovery.
 
   However, to get rid of outdated and orphaned wallet entries, only the descriptors from the `descriptors_names.txt` and `descriptors_utxos.txt` outputs are to be taken for the import to a fresh wallet.
 
@@ -227,3 +233,4 @@
   from its use or misuse!
   
 ---
+

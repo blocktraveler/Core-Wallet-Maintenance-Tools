@@ -14,7 +14,7 @@ rpc_pass = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # rpcpassword from namecoin.conf
 url = "http://127.0.0.1:8336/"
 
 session = requests.Session()
-adapter = requests.adapters.HTTPAdapter(pool_connections=1, pool_maxsize=10, max_retries=3, pool_block=False)
+adapter = requests.adapters.HTTPAdapter(pool_connections=1, pool_maxsize=4, max_retries=3, pool_block=False)
 session.mount(url, adapter)
 session.auth = (rpc_user, rpc_pass)
 session.headers.update({"Content-Type": "application/json"})
@@ -100,4 +100,5 @@ def main():
     input("Press Enter to exit...")
 
 if __name__ == "__main__":
+
     main()

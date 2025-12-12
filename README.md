@@ -139,8 +139,8 @@
   * `ecdsa` (elliptic curve key operations)
   * Python standard libraries (`hashlib`, `hmac`, `struct`, etc.)
   * To install the external libraries, run the following command in the console:
-  
-	pip install requests ecdsa
+
+		pip install requests ecdsa
   
   Usage:
   ------
@@ -233,4 +233,5 @@
   from its use or misuse!
   
 ---
+
 
